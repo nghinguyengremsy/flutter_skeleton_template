@@ -1,10 +1,21 @@
+// ignore_for_file: public_member_api_docs
+
+/*
+ * File:       home_page.dart
+ * Created on: Sun Jun 19 2022
+ * Author:     Nguyen Huu Nghi
+ *
+ * Copyright (c) 2022 Nguyen Huu Nghi
+ *
+ * Description 
+ */
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../config/app_router.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();

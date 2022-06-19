@@ -4,6 +4,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../config/config.dart';
 import '../../theme/theme_providers.dart';
+import '../../widgets/custom_sliver_app_bar.dart';
 import 'theme_mode_switch.dart';
 import 'theme_selector.dart';
 
@@ -38,25 +39,8 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [
-          SliverAppBar(
-            expandedHeight: 60,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                AppConst.pageAppbarBgImg,
-                fit: BoxFit.cover,
-              ),
-              stretchModes: const [StretchMode.fadeTitle],
-              title: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    Text('Cài đặt'),
-                  ],
-                ),
-              ),
-            ),
+          const CustomSliverAppBar(
+            title: 'Cài đặt',
           ),
           SliverToBoxAdapter(
             child: SizedBox(

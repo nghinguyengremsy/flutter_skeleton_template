@@ -1,4 +1,13 @@
 // ignore_for_file: unused_field
+/*
+ * File:       app_theme.dart
+ * Created on: Sun Jun 19 2022
+ * Author:     Nguyen Huu Nghi
+ *
+ * Copyright (c) 2022 Nguyen Huu Nghi
+ *
+ * Description 
+ */
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 
@@ -289,7 +298,7 @@ class AppTheme {
   static List<FlexSchemeData> schemes = <FlexSchemeData>[
     // Add all our custom schemes to the list of schemes.
     const FlexSchemeData(
-      name: 'Gremsy (default)',
+      name: 'default',
       description: 'Gremsy Blue.',
       light: _customScheme1Light,
       dark: _customScheme1Dark,
@@ -339,3 +348,12 @@ class AppTheme {
     ...FlexColor.schemesList,
   ];
 }
+/*
+ * File:       app_theme.dart
+ * Created on: Sun Jun 19 2022
+ * Author:     Nguyen Huu Nghi
+ *
+ * Copyright (c) 2022 Nguyen Huu Nghi
+ *
+ * Description 
+ */

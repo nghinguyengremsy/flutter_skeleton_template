@@ -1,3 +1,12 @@
+/*
+ * File:       my_app.dart
+ * Created on: Sun Jun 19 2022
+ * Author:     Nguyen Huu Nghi
+ *
+ * Copyright (c) 2022 Nguyen Huu Nghi
+ *
+ * Description 
+ */
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -96,17 +105,17 @@ class _MyAppState extends ConsumerState<MyApp> {
           key: state.pageKey,
         ),
         routes: [
-          // GoRoute(
-          //   name: AppRouter.HOMESCREEN,
-          //   path: '${AppRouter.HOMESCREEN}',
-          //   builder: (context, state) => HomePage(
-          //     key: state.pageKey,
-          //   ),
-          //   routes: [],
-          // ),
+          GoRoute(
+            name: AppRouter.HOMESCREEN,
+            path: AppRouter.HOMESCREEN,
+            builder: (context, state) => HomePage(
+              key: state.pageKey,
+            ),
+            routes: [],
+          ),
           GoRoute(
             name: AppRouter.SETTINGS,
-            path: '${AppRouter.SETTINGS}',
+            path: AppRouter.SETTINGS,
             builder: (context, state) => SettingsPage(
               key: state.pageKey,
             ),
