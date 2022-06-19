@@ -7,7 +7,7 @@ class AppConst {
   AppConst._();
 
   ///App name
-  static const String appName = 'Innovation HUB';
+  static const String appName = 'Flutter App';
 
   ///App Version,  update this info before building app.
   static const String version = '0.1.0';

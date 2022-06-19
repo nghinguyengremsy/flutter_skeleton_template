@@ -2,11 +2,16 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../config/config.dart';
-import '../theme/theme_files.dart';
 
+import '../theme/theme_files.dart';
+import 'home_page/home_page.dart';
+import 'settings/settings_page.dart';
+
+///
 class MyApp extends ConsumerStatefulWidget {
   ///Construct
   const MyApp({Key? key}) : super(key: key);
@@ -17,6 +22,10 @@ class MyApp extends ConsumerStatefulWidget {
 
 class _MyAppState extends ConsumerState<MyApp> {
   // ThemeMode themeMode = ThemeMode.system;
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +47,7 @@ class _MyAppState extends ConsumerState<MyApp> {
           ResponsiveBreakpoint.autoScale(AppConst.ultraBreakpoint, name: 'XL'),
         ],
       ),
-      title: 'Gremsy HUB',
+      title: AppConst.appName,
       theme: AppTheme.light(
         usedTheme: _schemeIndex,
         swapColors: false,
@@ -70,6 +79,8 @@ class _MyAppState extends ConsumerState<MyApp> {
         Locale('vi'),
         Locale('en'),
       ],
+      routeInformationProvider: _router.routeInformationProvider,
+
       // home: const LandingPage(), // NOTE: use GoRoute to navigate to the page.
       routeInformationParser: _router.routeInformationParser,
       routerDelegate: _router.routerDelegate,
@@ -84,52 +95,63 @@ class _MyAppState extends ConsumerState<MyApp> {
         builder: (context, state) => LandingPage(
           key: state.pageKey,
         ),
-      ),
-
-      GoRoute(
-        name: productionHubRouteName,
-        path: '/Production-Hub',
-        builder: (context, state) => ProductionHubPage(
-          key: state.pageKey,
-        ),
-      ),
-      GoRoute(
-        name: ftqcManagementRouteName,
-        path: '/FtQc-Management',
-        builder: (context, state) => FtQcMonitorPage(
-          key: state.pageKey,
-        ),
-      ),
-      GoRoute(
-        name: productionPlanningRouteName,
-        path: '/Production-Planning',
-        builder: (context, state) {
-          return ProductionPlanningPage(
-            key: state.pageKey,
-          );
-        },
-      ),
-      GoRoute(
-        name: inventoryManagementRouteName,
-        path: '/Inventory-Management',
-        builder: (context, state) => InventoryManagementPage(
-          key: state.pageKey,
-        ),
-      ),
-      //TODO: Them cac route cho cac module khác
-
-      GoRoute(
-        name: 'settings',
-        path: '/settings',
-        builder: (context, state) => SettingsPage(
-          key: state.pageKey,
-        ),
+        routes: [
+          // GoRoute(
+          //   name: AppRouter.HOMESCREEN,
+          //   path: '${AppRouter.HOMESCREEN}',
+          //   builder: (context, state) => HomePage(
+          //     key: state.pageKey,
+          //   ),
+          //   routes: [],
+          // ),
+          GoRoute(
+            name: AppRouter.SETTINGS,
+            path: '${AppRouter.SETTINGS}',
+            builder: (context, state) => SettingsPage(
+              key: state.pageKey,
+            ),
+          ),
+        ],
       ),
     ],
     // initialLocation: '/',
     errorBuilder: (context, state) =>
         ErrorPage(errorState: state.error.toString()),
   );
+}
+
+///Landing Screen is the first screen show when app launch
+class LandingPage extends ConsumerStatefulWidget {
+  ///Construct
+  const LandingPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  ConsumerState<LandingPage> createState() => _LandingPageState();
+}
+
+class _LandingPageState extends ConsumerState<LandingPage> {
+  @override
+  Widget build(BuildContext context) {
+    // final _userAsync = ref.watch(currentUserStreamProvider);
+
+    // // 3. watch selectedPageBuilderProvider
+
+    // return AsyncValueWidget<UserModel?>(
+    //   value: _userAsync,
+    //   data: (mUser) {
+    //     if (mUser != null) {
+    //       // return const MainScreen();
+    //       // debugPrint('User changed: $mUser');
+    //       return HomePage();
+    //     } else {
+    //       return const AuthPage();
+    //     }
+    //   },
+    // );
+    return HomePage();
+  }
 }
 
 ///Error page when GoRouter got error

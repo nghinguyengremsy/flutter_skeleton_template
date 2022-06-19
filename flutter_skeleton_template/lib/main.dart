@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import 'modules/my_app.dart';
 import 'services/local_storage_services/sembast_database.dart';
@@ -21,6 +22,10 @@ Future<void> main() async {
 
   final themeController = SchemeController(themeService);
   await themeController.getTheme();
+
+  // turn off the # in the URLs on the web
+  GoRouter.setUrlPathStrategy(UrlPathStrategy.path);
+
   runApp(
     ProviderScope(
       overrides: [

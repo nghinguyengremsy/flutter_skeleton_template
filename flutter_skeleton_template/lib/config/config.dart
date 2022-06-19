@@ -10,3 +10,4 @@ export 'app_typedef.dart';
 export 'async_value_widget.dart';
 export 'enums_const.dart';
 export 'extension.dart';
+export 'app_router.dart';
