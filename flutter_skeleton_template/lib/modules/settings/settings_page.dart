@@ -1,3 +1,12 @@
+/*
+ * File:       settings_page.dart
+ * Created on: Mon Jun 20 2022
+ * Author:     Nguyen Huu Nghi
+ *
+ * Copyright (c) 2022 Nguyen Huu Nghi
+ *
+ * Description 
+ */
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
