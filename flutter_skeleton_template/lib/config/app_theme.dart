@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 
 import 'app_const.dart';
 import 'app_insets.dart';
+import 'config.dart';
 
 /// The theme for this app are defined here.
 class AppTheme {
@@ -29,14 +30,17 @@ class AppTheme {
   }) {
     // We need to use the ColorScheme defined by used FlexColorScheme as input
     // to other theme's, so we create it first.
+    final _textTheme = const TextTheme()
+        .apply(bodyColor: AppColors.black, displayColor: AppColors.black);
     final _flexScheme = FlexColorScheme.light(
-      colors: schemes[usedTheme].light,
+      colors: AppTheme.schemes[usedTheme].light,
       swapColors: swapColors,
       appBarStyle: appBarStyle,
       // surfaceStyle: surfaceStyle,
       appBarElevation: appBarElevation,
       visualDensity: FlexColorScheme.comfortablePlatformDensity,
       fontFamily: AppFonts.mainFont,
+      textTheme: _textTheme,
     );
     // Get the ColorScheme defined by our used FlexColorScheme, we will use
     // the colors in it, in an example to customize the default colors in
@@ -50,8 +54,22 @@ class AppTheme {
         _colorScheme,
         const Color(0x1F000000),
       ),
-      textButtonTheme: textButtonTheme,
+      textButtonTheme: AppTheme.textButtonTheme,
       toggleButtonsTheme: toggleButtonsTheme(_colorScheme),
+      iconTheme: const IconThemeData(
+        color: AppColors.black,
+      ),
+      appBarTheme: const AppBarTheme(
+        iconTheme: IconThemeData(
+          color: AppColors.white,
+        ),
+        toolbarTextStyle: TextStyle(
+          color: AppColors.white,
+        ),
+        titleTextStyle: TextStyle(
+          color: AppColors.white,
+        ),
+      ),
     );
   }
 
@@ -68,6 +86,8 @@ class AppTheme {
   }) {
     // We need to use the ColorScheme defined by used FlexColorScheme as input
     // to sub-theme's, so we create it first.
+    final _textTheme = const TextTheme()
+        .apply(bodyColor: AppColors.white, displayColor: AppColors.white);
     final _flexScheme = FlexColorScheme.dark(
       colors: computeDark
           ? schemes[usedTheme].light.defaultError.toDark(darkLevel)
@@ -79,7 +99,7 @@ class AppTheme {
       darkIsTrueBlack: darkIsTrueBlack,
       visualDensity: FlexColorScheme.comfortablePlatformDensity,
       fontFamily: AppFonts.mainFont,
-      textTheme: const TextTheme(),
+      textTheme: _textTheme,
     );
     // Get the ColorScheme defined by our used FlexColorScheme, we will use
     // the colors in it, in an example to customize the default colors in
@@ -95,6 +115,20 @@ class AppTheme {
       ),
       textButtonTheme: textButtonTheme,
       toggleButtonsTheme: toggleButtonsTheme(_colorScheme),
+      iconTheme: const IconThemeData(
+        color: AppColors.white,
+      ),
+      appBarTheme: const AppBarTheme(
+        iconTheme: IconThemeData(
+          color: AppColors.white,
+        ),
+        toolbarTextStyle: TextStyle(
+          color: AppColors.white,
+        ),
+        titleTextStyle: TextStyle(
+          color: AppColors.white,
+        ),
+      ),
     );
   }
 
@@ -143,12 +177,14 @@ class AppTheme {
 
   ///Custom OutlinedButton style
   static OutlinedButtonThemeData outlinedButtonTheme(
-          ColorScheme scheme, Color disabledColor) =>
+    ColorScheme scheme,
+    Color disabledColor,
+  ) =>
       OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          minimumSize: minButtonSize,
+          minimumSize: AppTheme.minButtonSize,
           shape: const StadiumBorder(),
-          padding: roundButtonPadding,
+          padding: AppTheme.roundButtonPadding,
         ).copyWith(
           side: MaterialStateProperty.resolveWith<BorderSide?>(
             (Set<MaterialState> states) {
@@ -176,9 +212,9 @@ class AppTheme {
   ///Custom text button theme
   static TextButtonThemeData get textButtonTheme => TextButtonThemeData(
         style: TextButton.styleFrom(
-          minimumSize: minButtonSize,
+          minimumSize: AppTheme.minButtonSize,
           shape: const StadiumBorder(),
-          padding: roundButtonPadding,
+          padding: AppTheme.roundButtonPadding,
         ),
       );
 
@@ -296,13 +332,6 @@ class AppTheme {
   /// Create a list with all our custom color schemes and add
   /// all the FlexColorScheme built-in ones to the end of the list.
   static List<FlexSchemeData> schemes = <FlexSchemeData>[
-    // Add all our custom schemes to the list of schemes.
-    const FlexSchemeData(
-      name: 'default',
-      description: 'Gremsy Blue.',
-      light: _customScheme1Light,
-      dark: _customScheme1Dark,
-    ),
     //
     // As an example, say you want to add one of the pre-defined FlexColor
     // schemes to the list of schemes we offer as user choices, then just pick

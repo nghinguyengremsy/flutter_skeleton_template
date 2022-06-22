@@ -24,6 +24,10 @@ class CustomSliverAppBar extends StatelessWidget {
   final String? backgroundUrl;
   @override
   Widget build(BuildContext context) {
+    final _style = Theme.of(context)
+        .appBarTheme
+        .titleTextStyle!
+        .copyWith(fontWeight: FontWeight.bold);
     return SliverAppBar(
       expandedHeight: 60,
       pinned: true,
@@ -35,14 +39,13 @@ class CustomSliverAppBar extends StatelessWidget {
         ),
         stretchModes: const [StretchMode.fadeTitle],
         title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.only(left: 30),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
                 _title,
+                style: _style,
               ),
-              const Spacer(),
             ],
           ),
         ),
