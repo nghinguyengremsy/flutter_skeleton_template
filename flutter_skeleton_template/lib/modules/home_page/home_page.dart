@@ -38,8 +38,8 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Center(
-        child: const Text('Hello world.'),
+      body: const Center(
+        child: Text('Hello world.'),
       ),
     );
   }
