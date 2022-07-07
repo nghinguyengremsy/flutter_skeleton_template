@@ -56,7 +56,7 @@ class SchemeController extends StateNotifier<int> {
   SchemeController(
     this._themeService,
   ) : super(
-          0,
+          2,
         );
   final ThemeService _themeService;
 

@@ -18,6 +18,8 @@ class AppColors {
   // This class is not meant to be instantiated or extended; this constructor
   // prevents instantiation and extension.
   AppColors._();
+  static const white = Colors.white;
+  static const black = Colors.black;
   static const ruby = Color(0xFFE02020);
   static const rubyHSLColors = [
     HSLColor.fromAHSL(1, 360, 0.76, 0.25),
